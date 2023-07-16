@@ -16,7 +16,10 @@ Coding this small typeahead search bar tool was an amusing moment! I had a great
 - Responsive Design: The tool is designed to work seamlessly on different devices and screen sizes.
 
 ## 🟢 Demo
-![mvp demo](./demo.gif)
+![demo1](./demo1.gif)
+![demo2](./demo2.gif)
+![demo3](./demo3.gif)
+![demo4](./demo1.gif)
 
 ## 🟢 Functionality
 
