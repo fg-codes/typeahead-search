@@ -12,30 +12,39 @@ export const Typeahead = ({ books, categories }) => {
 
   const keyDown = (event) => {
     switch (event.key) {
-      case "Enter": {             // If the user hasn't typed anything yet, or string doesn't match any strings
+
+      // If the user hasn't typed anything yet, or string doesn't match any strings
+      case "Enter": {
         propose.length !== 0 && propose.length !== books.length && (
           handleGo()
         )
         return;
       }
+
+      // "ArrowUp" is locked at min index 0
       case "ArrowUp": {
         event.preventDefault();
-        proposeIndex > 0 && (setProposeIndex(proposeIndex - 1));   // "ArrowUp" is locked at min index 0
+        proposeIndex > 0 && (setProposeIndex(proposeIndex - 1));
         return;
       }
+
+      // "ArrowDown" at max suggestions length
       case "ArrowDown": {
         event.preventDefault();
-        proposeIndex < propose.length - 1 && (setProposeIndex(proposeIndex + 1));  // "ArrowDown" at max suggestions length
+        proposeIndex < propose.length - 1 && (setProposeIndex(proposeIndex + 1));
         return;
       }
-      case "Escape": {                    // On Escape, close the typeahead dropdown
+
+      // On Escape, close the typeahead dropdown
+      case "Escape": {  
         setPropose([]);
         return;
       }
     }
   }
 
-  const userTyping = (event) => {                                     // as the user types, we filter the suggestions
+  // filters the suggestions as the user types
+  const userTyping = (event) => {                                     
     const { value } = event.target
     setValue(value);
     setShowValue(false)
@@ -44,6 +53,7 @@ export const Typeahead = ({ books, categories }) => {
     ));
   }
 
+  // Key enter or on click on a result
   const handleGo = () => {
     setValue(propose[proposeIndex].title);
     setPropose([]);
@@ -51,6 +61,7 @@ export const Typeahead = ({ books, categories }) => {
     setProposeIndex(0);
   }
 
+  // clear button
   const handleClear = () => {
     setValue('');
     setShowValue(false);
