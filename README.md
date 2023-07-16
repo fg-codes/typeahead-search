@@ -1,74 +1,34 @@
-# Typeahead
 
-// yarn install
-// yarn start
+# ⚡Simple Typeahead Search - Books edition
 
-## 🦊 Pre-lecture
+## 🟢 About
 
-⏲️ _Estimated time required: 30 minutes._
+Coding this small typeahead search bar tool was an amusing moment! I had a great time working on this React Frontend project and implementing the functionality that provides real-time search suggestions. Overall, it was a fun project that allowed me to explore my coding skills and create something practical; It can be adapted to any database and integrated into a backend system with ease.
 
-- Take this time to go ack and complete the hangman game to 100% (including the stretch goals).
+![mvp demo](./mvp.png)
 
----
+## 🟢 Features
 
-## 🦉 Lecture
+- Real-time Suggestions: The tool provides immediate suggestions as the user types.
+- Search Term Prediction: The tool predicts the user's intended search term based on their input and offers relevant suggestions accordingly.
+- Search Term Highlighting: It highlights the matching portion of the suggested options, making it easier for users to identify the relevant terms.
+- Keyboard accessibility/navigation makes it easy to anyone who wants to navigate.
+- Responsive Design: The tool is designed to work seamlessly on different devices and screen sizes.
 
-There is no new content today. We will build a toggle component together, in class!
+## 🟢 Demo
+![mvp demo](./demo.gif)
 
-- Starter code: https://codesandbox.io/s/toggle-activity-oyg83
+## 🟢 Functionality
 
----
+> __Arrow up & down__ : _Navigate in the suggestions menu_
 
-## ⚡ Exercises
+> __Spacebar__ : _Close the suggestions menu_
 
-This workshop challenges you to build a common reusable component: The **Typeahead**.
+>__Enter__ : _Enter_
 
-Also called an **Autocomplete**, this component is designed to give users suggestions as they type, and allow the user to pick between the presented options.
+>__Tab__ : _Next tab stop_
 
-Here's a finished working demo:
-
-![working demo](./__lecture/assets/typeahead-mouse-demo.gif)
-
-## Exercise 1: Initial Structure
-
-Open this exercise file: [exercise-1.md](__workshop/exercise-1.md)
-
-## Exercise 2: Showing and Picking Suggestions
-
-Open this exercise file: [exercise-2.md](__workshop/exercise-2.md)
-
-## Exercise 3: Conditional Rendering
-
-Open this exercise file: [exercise-3.md](__workshop/exercise-3.md)
-
-## Exercise 4: Formatting the Matches
-
-Open this exercise file: [exercise-4.md](__workshop/exercise-4.md)
-
----
-
-<center>🟡 - Minimally complete workshop (75%) - 🟡</center>
-
----
-
-## Exercise 5: Keyboard Navigation
-
-Open this exercise file: [exercise-5.md](__workshop/exercise-5.md)
-
----
-
-<center>🟢 - Complete workshop (100%) - 🟢</center>
-
----
-
-## Exercise 6: Wrapping up Keyboard Support (stretch)
-
-Open this exercise file: [exercise-6.md](__workshop/exercise-6.md)
-
-## Exercise 7: Screen Readers (stretch)
-
-Open this exercise file: [exercise-7.md](__workshop/exercise-7.md)
-
-## Exercise 8: Grouping by Category
-
-Open this exercise file: [exercise-8.md](__workshop/exercise-8.md)
+## 🟢 Project Setup
+1. Open a terminal in VS Code
+2. Type `yarn install`
+3. Use `yarn start` to run the environment

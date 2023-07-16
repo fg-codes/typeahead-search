@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
 
+const MAX_RESULTS = 10;   // maximum of seatch suggestions
+const MIN_LETTERS = 2;    // minumum of typed lettes before opening the suggestions
+
 export const Typeahead = ({ books, categories }) => {
   const [value, setValue] = useState('');
   const [showValue, setShowValue] = useState(false)
@@ -11,20 +14,18 @@ export const Typeahead = ({ books, categories }) => {
     switch (event.key) {
       case "Enter": {             // If the user hasn't typed anything yet, or string doesn't match any strings
         propose.length !== 0 && propose.length !== books.length && (
-          handleGo(propose[proposeIndex].title)
+          handleGo()
         )
         return;
       }
       case "ArrowUp": {
-        event.preventDefault();         // prevent default to not push the cursor before or after the typed value
+        event.preventDefault();
         proposeIndex > 0 && (setProposeIndex(proposeIndex - 1));   // "ArrowUp" is locked at min index 0
-        setValue(propose[proposeIndex - 1].title);        // change input field text
         return;
       }
       case "ArrowDown": {
-        event.preventDefault();         // prevent default to not push the cursor before or after the typed value
+        event.preventDefault();
         proposeIndex < propose.length - 1 && (setProposeIndex(proposeIndex + 1));  // "ArrowDown" at max suggestions length
-        setValue(propose[proposeIndex + 1].title);        // change input field text
         return;
       }
       case "Escape": {                    // On Escape, close the typeahead dropdown
@@ -43,8 +44,8 @@ export const Typeahead = ({ books, categories }) => {
     ));
   }
 
-  const handleGo = (title) => {
-    setValue(title);
+  const handleGo = () => {
+    setValue(propose[proposeIndex].title);
     setPropose([]);
     setShowValue(true);
     setProposeIndex(0);
@@ -53,6 +54,7 @@ export const Typeahead = ({ books, categories }) => {
   const handleClear = () => {
     setValue('');
     setShowValue(false);
+    setProposeIndex(0)
   }
 
   return (
@@ -60,18 +62,19 @@ export const Typeahead = ({ books, categories }) => {
       <InputDiv>
         <Input
           type="text"
+          autoFocus
           onKeyDown={keyDown}
           onChange={userTyping}
           value={value}>
         </Input>
-        <Button onClick={() => handleGo(value)}>Enter</Button>
+        <Button onClick={handleGo}>Enter</Button>
         <Btnclr onClick={handleClear}>Clear</Btnclr>
       </InputDiv>
 
-      {value.length > 1 && propose.length >= 1 && (
+      {value.length > MIN_LETTERS-1 && propose.length >= 1 && (
         <SuggestionsWrapper>
           {propose.map((book, index) => {
-            return (
+            return index < MAX_RESULTS &&
               <Item
                 key={book.id}
                 onClick={() => handleGo(book.title)}
@@ -85,7 +88,6 @@ export const Typeahead = ({ books, categories }) => {
                   <i> in <Category> {categories[book.categoryId].name}</Category> </i>
                 </span>
               </Item>
-            )
           })}
         </SuggestionsWrapper>
       )}
